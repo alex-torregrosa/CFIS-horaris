@@ -4,7 +4,8 @@ import classe
 import grup
 
 class Info:
-    """docstring for Info."""
+    """Classe per a obtenir horaris del grau en enginyeria informàtica
+    des de l'api del racó."""
     def __init__(self):
         self.llista = self.llistaAssignatures()
         self.name = "Enginyeria Informàtica [FIB]"

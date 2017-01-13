@@ -1,6 +1,7 @@
 import assignatura
 import etseib
 import fib
+import horari
 
 def obteCarrera(facu):
     if facu == "1":
@@ -19,6 +20,40 @@ def obteCarrera(facu):
 def listAssig(assig):
     for el in assig:
         print(" ",el.nom)
+
+
+def generaHoraris(assig):
+    if len(assig) > 1:
+        horaris = []
+        for grup in assig[0].grups:
+            h = generaHoraris(assig[1:])
+            for el in h:
+                el.afegeixGrup(grup)
+            horaris += h
+        return horaris
+    elif len(assig) == 1:
+        h = []
+        for grup in assig[0].grups:
+            h.append(horari.Horari([grup]))
+        return h
+
+def filtraHoraris(horaris):
+    final = []
+    for horari in horaris:
+        if horari.esPossible():
+            final.append(horari)
+    return final
+def getKey(horario):
+    return horario.horaFi()
+
+def creaHoraris(assignatures):
+    print("Generant horaris per a",len(assignatures),"assignatures...")
+    h = generaHoraris(assignatures)
+    print("Filtrant horaris...")
+    h = filtraHoraris(h)
+    print("Ordenant per hora de finalització...")
+    return sorted(h,key=getKey)
+
 
 if __name__ == '__main__':
     print("Facultats disponibles:")
@@ -57,3 +92,10 @@ if __name__ == '__main__':
             assignatures.append(c2.creaAssignatura())
         else:
             cancelled = True
+
+    horaris = creaHoraris(assignatures)
+    n=0;
+    while n < len(horaris):
+        input("Prem enter per a mostrar l'horari "+str(n+1))
+        print(horaris[n])
+        n += 1
