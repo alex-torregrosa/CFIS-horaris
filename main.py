@@ -44,6 +44,8 @@ def filtraHoraris(horaris):
             final.append(horari)
     return final
 def getKey(horario):
+    if not horario.pucDinar():
+        return 999
     return horario.horaFi()
 
 def creaHoraris(assignatures):
@@ -98,4 +100,6 @@ if __name__ == '__main__':
     while n < len(horaris):
         input("Prem enter per a mostrar l'horari "+str(n+1))
         print(horaris[n])
+        horaris[n].representa()
+        print(horaris[n].pucDinar())
         n += 1

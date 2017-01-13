@@ -6,6 +6,7 @@ class Grup:
         self.num = num
         self.classes = []
         self.assig = ""
+        self.facu = "#";
 
     def afegeixClasse(self, classe):
         self.classes.append(classe)

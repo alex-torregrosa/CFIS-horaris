@@ -31,7 +31,7 @@ class Indus:
             return selecciona()
         else:
             codi = self.llista[num-1][1].split("_")[1]
-            a = assignatura.Assignatura(self.llista[num-1][0], codi)
+            a = assignatura.Assignatura(self.llista[num-1][0], codi,"E")
             return a
 
     def obteHorari(self, assig):

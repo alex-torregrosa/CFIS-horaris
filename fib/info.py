@@ -28,7 +28,7 @@ class Info:
             return selecciona()
         else:
             codi = self.llista[num-1]
-            a = assignatura.Assignatura(self.llista[num-1], codi)
+            a = assignatura.Assignatura(self.llista[num-1], codi,"F")
             return a
 
 

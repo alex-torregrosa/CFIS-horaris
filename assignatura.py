@@ -2,12 +2,14 @@ import classe
 
 class Assignatura:
     """docstring for assignatura."""
-    def __init__(self, nom, codi):
+    def __init__(self, nom, codi,f):
         self.nom = nom
         self.codi = codi
         self.grups = []
+        self.facu = f
     def afegeixGrup(self,grup):
         grup.assig = self
+        grup.facu = self.facu
         self.grups.append(grup)
 
     # def llistaGrups():
