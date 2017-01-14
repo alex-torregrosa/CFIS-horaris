@@ -8,6 +8,10 @@ class Assignatura:
         self.grups = []
         self.facu = f
     def afegeixGrup(self,grup):
+        for x in range(0,len(self.grups)):
+            if self.grups[x].esIgual(grup):
+                self.grups[x].num = str(self.grups[x].num) + '/' +str(grup.num)
+                return 0
         grup.assig = self
         grup.facu = self.facu
         self.grups.append(grup)

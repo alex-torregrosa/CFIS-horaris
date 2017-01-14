@@ -3,7 +3,7 @@ import etseib.parsers
 import assignatura
 import classe
 import grup
-
+from colorama import Fore, Style
 class Indus:
     """docstring for Indus."""
     def __init__(self):
@@ -31,7 +31,7 @@ class Indus:
             return selecciona()
         else:
             codi = self.llista[num-1][1].split("_")[1]
-            a = assignatura.Assignatura(self.llista[num-1][0], codi,"E")
+            a = assignatura.Assignatura(self.llista[num-1][0], codi,Fore.BLUE+"E"+Style.RESET_ALL)
             return a
 
     def obteHorari(self, assig):

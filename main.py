@@ -2,6 +2,8 @@ import assignatura
 import etseib
 import fib
 import horari
+from colorama import Fore, Back, Style, init
+init()
 
 def obteCarrera(facu):
     if facu == "1":
@@ -45,15 +47,15 @@ def filtraHoraris(horaris):
     return final
 def getKey(horario):
     if not horario.pucDinar():
-        return 999
+        return 100 + horario.horaFi()
     return horario.horaFi()
 
 def creaHoraris(assignatures):
     print("Generant horaris per a",len(assignatures),"assignatures...")
     h = generaHoraris(assignatures)
-    print("Filtrant horaris...")
+    print(len(h),"horaris trobats, filtrant...")
     h = filtraHoraris(h)
-    print("Ordenant per hora de finalització...")
+    print(len(h),"horaris possibles, ordenant per hora de finalització...")
     return sorted(h,key=getKey)
 
 

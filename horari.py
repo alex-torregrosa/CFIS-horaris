@@ -28,9 +28,9 @@ class Horari(object):
 
     def representa(self):
         graf = self.creaGrafica()
-        c = 8
+        c = 8.0
         for row in graf:
-            print(c,":",end=" ")
+            print('{:4.1f}'.format(c),":",end=" ")
             c+= 0.5
             for el in row:
                 print(el,end=" ")

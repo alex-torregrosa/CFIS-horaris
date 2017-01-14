@@ -2,6 +2,7 @@ import requests
 import assignatura
 import classe
 import grup
+from colorama import Fore, Style
 
 class Info:
     """Classe per a obtenir horaris del grau en enginyeria informàtica
@@ -28,7 +29,7 @@ class Info:
             return selecciona()
         else:
             codi = self.llista[num-1]
-            a = assignatura.Assignatura(self.llista[num-1], codi,"F")
+            a = assignatura.Assignatura(self.llista[num-1], codi,Fore.YELLOW+"F"+Style.RESET_ALL)
             return a
 
 
