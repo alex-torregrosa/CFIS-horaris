@@ -85,8 +85,7 @@ if __name__ == '__main__':
     print("Facultats disponibles:")
     print("1: ETSEIB")
     print("2: FIB")
-    print("3: ETSETB")
-    print()
+    print("3: ETSETB (en manteniment)")
 
     i1 = input("Selecciona la primera facultat: ")
     c1 = obteCarrera(i1)
