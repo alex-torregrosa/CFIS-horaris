@@ -66,15 +66,21 @@ class Info:
 
         lastg = 0
         isGroup = True
+<<<<<<< HEAD
         gcal = [[False for x in range(0,5)] for y in range(0,14)]
+=======
+>>>>>>> c34ca9304112f459c9bbf58bd4464c49e0ffa76b
         for cl in horari:
             act = int(cl[1])
             if act != lastg:
                 if not isGroup: # Venim de l'ultim subgrup del grup anterior
                     self.parseCal(scal,lastg,assig)
+<<<<<<< HEAD
                 elif isGroup and lastg!=0 and act==lastg+10: #només hi ha grups
                     self.parseCal(gcal,lastg,assig)
                 
+=======
+>>>>>>> c34ca9304112f459c9bbf58bd4464c49e0ffa76b
                 if act%10 == 0:
                     # print("Grup",act)
                     isGroup = True
@@ -90,10 +96,14 @@ class Info:
                 gcal[h][d] = True
             else:
                 scal[h][d] = True
+<<<<<<< HEAD
         if isGroup:
             self.parseCal(gcal,lastg,assig)
         else:
             self.parseCal(scal,lastg,assig)
+=======
+        self.parseCal(scal,lastg,assig)
+>>>>>>> c34ca9304112f459c9bbf58bd4464c49e0ffa76b
 
     def parseCal(self,cal, grupo, assig):
         started = False
@@ -112,7 +122,11 @@ class Info:
             if started:
                 g.afegeixClasse(classe.Classe(start, f+8,d))
         assig.afegeixGrup(g)
+<<<<<<< HEAD
         #grupo += 10
+=======
+        grupo += 10
+>>>>>>> c34ca9304112f459c9bbf58bd4464c49e0ffa76b
 
 
 

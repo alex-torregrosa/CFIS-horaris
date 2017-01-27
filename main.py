@@ -33,9 +33,10 @@ def obteCarrera(facu):
         fib.llistaCarreres()
         c = input("Selecciona una carrera: ")
         return fib.carrera(c)
-    if facu == "3":
+     if facu == "3":
+        print()
         etsetb.llistaCarreres()
-        c= input("Selecciona una carrera: ")
+        c = input("Selecciona una carrera: ")
         return etsetb.carrera(c)
     else:
         print("La facultat seleccionada no està disponible")
@@ -84,7 +85,7 @@ if __name__ == '__main__':
     print("Facultats disponibles:")
     print("1: ETSEIB")
     print("2: FIB")
-    print("3: ETSETB (en manteniment)")
+    print("3: ETSETB")
     print()
 
     i1 = input("Selecciona la primera facultat: ")
