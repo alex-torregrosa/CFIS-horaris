@@ -1,0 +1,9 @@
+- info.py
+    > No assigna valor a gcal
+    > No assigna valor a scal --> els crida abans de donar-los valor!
+    
+    >> Si nomes hi ha grups no assigna scal
+    >> Si nomes hi ha subgrups no assigna gcal
+    
+    >> Si nomes hi ha subgrups peta directament pq no te calendari de grups
+    >> Si nomes hi ha grups no fa el calendari per cada grup, nomes per l'ultim, i peta perque no te calendari de subgrups quan intenta fer el de l'ultim grup
