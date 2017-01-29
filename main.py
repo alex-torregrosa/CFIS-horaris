@@ -17,6 +17,7 @@
 import assignatura
 import etseib
 import fib
+import etsetb
 import horari
 from colorama import Fore, Back, Style, init
 init()
@@ -32,6 +33,11 @@ def obteCarrera(facu):
         fib.llistaCarreres()
         c = input("Selecciona una carrera: ")
         return fib.carrera(c)
+    if facu == "3":
+        print()
+        etsetb.llistaCarreres()
+        c = input("Selecciona una carrera: ")
+        return etsetb.carrera(c)
     else:
         print("La facultat seleccionada no està disponible")
         exit()
@@ -79,7 +85,7 @@ if __name__ == '__main__':
     print("Facultats disponibles:")
     print("1: ETSEIB")
     print("2: FIB")
-    print()
+    print("3: ETSETB (en manteniment)")
 
     i1 = input("Selecciona la primera facultat: ")
     c1 = obteCarrera(i1)
