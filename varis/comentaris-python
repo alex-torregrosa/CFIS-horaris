@@ -1,3 +1,0 @@
-- install colorama: (sudo) pip3 install colorama
-- llegir fitxers: var = open("nomArxiu"), for line in var
-- comentaris: # "comentari"

@@ -33,7 +33,7 @@ def obteCarrera(facu):
         fib.llistaCarreres()
         c = input("Selecciona una carrera: ")
         return fib.carrera(c)
-     if facu == "3":
+    if facu == "3":
         print()
         etsetb.llistaCarreres()
         c = input("Selecciona una carrera: ")
