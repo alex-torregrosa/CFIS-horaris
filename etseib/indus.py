@@ -29,12 +29,14 @@ class Indus:
         self.name = "Enginyeria Industrial [ETSEIB]"
 
     def llistaAssignatures(self):
+        """Obté la llista d'assignatures amb ajuda del parser"""
         r = requests.get("https://guiadocent.etseib.upc.edu/simgen/form/simgen.php?lang=ca&degree=752&semester=next")
         p = etseib.parsers.parserLlista();
         p.feed(r.text)
         return p.llista
 
     def selecciona(self):
+        """Presenta a l'usuari la llista d'assignatures per a seleccionar-ne una"""
         print("A continuació tens una llista d'assignatures, selecciona la que desitjis:")
         print()
         for x in range(0,len(self.llista)):
@@ -54,7 +56,7 @@ class Indus:
     def obteHorari(self, assig):
         base = "https://guiadocent.etseib.upc.edu/simgen/action/result.php?degree=752&lang=ca&semester=next&grup_"
         base += str(assig.codi) + "_"
-        grupo = 10
+        grupo = 10 #TODO POTSER EXISTEIXEN ASSIGNATURES AMB SUBGRUPS!!!
         existeix = True
         print("Buscant horaris per a",assig.nom,"...")
         while existeix:

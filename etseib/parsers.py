@@ -1,5 +1,5 @@
 # CFIS-horaris, a timetable generator for CFIS students
-#     Copyright (C) {year}  {name of author}
+#     Copyright (C) 2017  Àlex Torregrosa
 #
 #     This program is free software: you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -17,11 +17,17 @@
 from html.parser import HTMLParser
 
 class parserLlista(HTMLParser):
+    """Parser de la llista d'assignatures d'Enginyeria Industrial"""
     def __init__(self):
         super(parserLlista, self).__init__()
         self.currentcode = ""
         self.status = 0;
+        # 0: Buscant caselles de verificació (checkbox) per a llegir el codi
+        # 1: Buscant el primer th
+        # 2: Buscant el segon th
+        # 3: Esperant a llegir text per a obtenir el nom
         self.llista = []
+
     def handle_starttag(self, tag, attrs):
         if tag == "input":
             if attrs[0][1] == "checkbox":
@@ -30,27 +36,31 @@ class parserLlista(HTMLParser):
         elif tag == "th":
             if self.status > 0:
                 self.status += 1
+
     def handle_data(self, data):
         if self.status == 3:
             self.llista.append((data,self.currentcode))
             self.status = 0
 
 class parserHoraris(HTMLParser):
+    """Parser dels horaris d'Enginyeria Industrial"""
+
     def __init__(self):
         super(parserHoraris, self).__init__()
         self.status = 0;
         # 0-> Inicial (buscant taula2)
-        # 1-> A taula2 (buscant th w90)
+        # 1-> A taula2 (buscant un th d'amplada 90)
         # 2-> A una franja horaria, buscant TD's
-        # 3 -> A un TD (franja 1h), espera a buscar </table> x sortir
-        #        si esta a 3 i troba td -> TENIM HORA!!!
+        # 3 -> A un TD (franja 1h), espera a buscar </table> per a sortir
+        #        si esta a 3 i troba td -> Hi ha classe
 
         self.dia = -1
         self.franja = -1
         self.cal = [[False for x in range(0,5)] for y in range(0,28)]
-        self.full = -1
+        self.full = -1 # Mida de les franges, 1: 1h, 0: 1/2h
 
     def handle_starttag(self, tag, attrs):
+        # Màquina d'estats
         if self.status == 0:
             if tag == "table":
                 self.status = 1
@@ -87,6 +97,7 @@ class parserHoraris(HTMLParser):
                     self.status = 1
 
     def handle_data(self,data):
+        # Si acaba de trobar el primer th, mira la mida de les franges
         if self.full == -1 and self.status == 2:
             if data.find("3") == -1:
                 self.full = 1

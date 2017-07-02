@@ -1,5 +1,5 @@
 # CFIS-horaris, a timetable generator for CFIS students
-#     Copyright (C) {year}  {name of author}
+#     Copyright (C) 2017  Àlex Torregrosa
 #
 #     This program is free software: you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by

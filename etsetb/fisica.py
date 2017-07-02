@@ -1,14 +1,30 @@
+# CFIS-horaris, a timetable generator for CFIS students
+#     Copyright (C) 2017  Roger Serrat
+#
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+#
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+#
+#     You should have received a copy of the GNU General Public License
+#     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 import assignatura
 import classe
 import grup
 from colorama import Fore, Style
 
 class Fisica:
-    
+
     def __init__(self):
         self.llista = self.llistaAssignatures()
         self.name = "Enginyeria Física [ETSETB]"
-     
+
     def llistaAssignatures(self):
         f = open("etsetb/assig_fis/assig_fisica.txt")
         l = []
@@ -16,7 +32,7 @@ class Fisica:
             l.append(line)
         l=[x.strip() for x in l]
         return l
-        
+
     def selecciona(self):
         print("A continuació tens una llista d'assignatures, selecciona la que desitjis:")
         print()
@@ -32,7 +48,7 @@ class Fisica:
         else:
             codi = self.llista[num-1]
             a = assignatura.Assignatura(self.llista[num-1], codi,Fore.GREEN+"T"+Style.RESET_ALL)
-            return a    
+            return a
 
     def obteHorari(self, assig):
         base = "etsetb/assig_fis/"
@@ -70,7 +86,7 @@ class Fisica:
                 lastg = act
             h = (int(cl[3].split(':')[0]) - 8)*2
             if int(cl[3].split(':')[1]) == 30:
-                h += 1   
+                h += 1
             d = int(cl[2])-1
             if isGroup:
                 gcal[h][d] = True
